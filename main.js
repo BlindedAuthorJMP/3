@@ -39,24 +39,23 @@ $(function() {
   //  settings.condition_1_likes = [12000, 9999999];
 
     // In condition 2, user will receive 6 likes at the following timepoints (in ms). Default: [10000, 15000,35000,80000,1320000,150000]
-    //settings.condition_2_likes = [10000,15000,35000,80000,100000,132000,150000];
-    settings.condition_2_likes = [10000,11111];
-    settings.condition_2_Dislikes = [10000,132000];
+    settings.condition_2_likes = [10000,35000,80000,100000,132000,150000];
+    settings.condition_2_Dislikes = [10000,15000,35000,80000,100000,13000];
+
     // In condition 3, user will receive 9 likes at the following timepoints (in ms). Default: [10000, 11000,15000,35000,80000,100000,110000,150000,20000]
   //  settings.condition_3_likes = [10000,11000,15000,35000,80000,100000,110000,150000,20000];
 
 	// **Others' likes**
 	// To keep the total distribution of "likes" constant across conditions, The "likes" received by one group member can be adjusted according to the participant's. By default, the other group member receives 9 "likes" in the participant-ostracism condition, 5 in the participant-inclusion condtion, and 1 in the participant-overinclusion condtion.
 //	settings.condition_1_adjusted_likes = [12000,14000,15000,35000,80000,100000,110000,150000,20000]; // 9
-	settings.condition_2_adjusted_likes = [12000,14000,15000,35000,80000]; // 5
-  settings.condition_2_adjusted_Dislikes = [12000,14000,15000,35000,80000]; // 5
+settings.condition_2_adjusted_likes = [12000,14000,15000,35000,80000]; // 5
+settings.condition_2_adjusted_Dislikes = [12000,14000,15000,35000,80000]; // 5
 //	settings.condition_3_adjusted_likes = [12000, 9999999]; //1
 
     // Usernames by which the participant will receive "likes"
 	// If group member names are changed, these should be changed accordingly.
-  //'Heather','Georgeee'
-    settings.likes_by = ['Hannah','Georgeee','Sarah','Arjen','Jenny','AncaD','Laura','John','Ky'];
-    settings.Dislikes_by = ['John','AncaD','Sarah','Arjen','Jenny','Georgeee','Laura','Hannah','Ky'];
+  settings.likes_by = ['John','AncaD','Nick','Sarah','Laura','Jenny','Georgeee','Hannah','Ky'];
+  settings.Dislikes_by = ['John','AncaD','Sarah','Arjen','Jenny','Georgeee','Laura','Hannah','Ky'];
   }
 
   // -------------------
@@ -206,7 +205,7 @@ $(function() {
   			init_task();
   	});
   }
-  function DeaktiviereLike(){
+function DeaktiviereLike(){
 	  	 setTimeout(function(){ 
     $('.btn-like').attr("disabled", true);
 	alert("Die Zeit ist abgelaufen. Bitte kehren Sie nun zum Fragebogen zurück."); }, 2000);
@@ -215,6 +214,8 @@ $(function() {
 	setTimeout(function(){   
     $('.btn-Dislike').attr("disabled", true);}, 3000);
   }
+
+
 
   // **Slide:** **Task**
   function init_task() {
@@ -226,10 +227,10 @@ $(function() {
   	jQuery("#countdown").countDown({
   		startNumber: window.settings.tasklength/1000, // in seconds
   		callBack: function(me) {
-  		console.log('over');
+  			console.log('over');
         $('#timer').text('00:00');
         DeaktiviereLike();
-        DeaktiviereDisLike();	
+        DeaktiviereDisLike();
   		}
   	});
 
@@ -256,7 +257,7 @@ $(function() {
 
     // Randomize order of other players boxes
     function reorder() {
-      //alert('REORDER FUNCTION')
+    //  alert('REORDER FUNCTION')
        var grp = $("#others").children();
        var cnt = grp.length;
 
@@ -272,58 +273,9 @@ $(function() {
     }
     reorder();
 
-    //Function Test
-
-	function LikeDisLike(){
-		  $('.userslikes').each(function(){
-		var that = $(this);
-  		var usernames = $(this).data('usernames').split(",");
-  		var times = $(this).data('likes').split(",");
-
-		for(var i=0; i<times.length; i++)
-  		{
-  			times[i] = +times[i];
-
-			if(times[i]==10000){
-				themsg = usernames[i] + " gefällt deine Beschreibung";
-				setTimeout(function(themsg) {
-					that.text(parseInt(that.text()) + 1);
-					alertify.success(themsg)
-				}, times[i], themsg);
-
-			}
-
-			else {
-				DislikeFunction(times[i],usernames[i]);
-			}
-		}
-
-		  });
-	}
-
-	function DislikeFunction(times,usernames){
-	$('.usersDislikes').each(function(){
-		if(times==11111){
-					var that = $(this);
-					themsg = usernames + " gefällt deine Beschreibung nicht";
-					setTimeout(function(themsg) {
-					that.text(parseInt(that.text()) + 1);
-					alertify.error(themsg)
-				}, times, themsg);
-
-		//ThemsgN = usernames+ " Disliked your post";
-		//that.text(parseInt(that.text()) + 1);
-		//alertify.error(ThemsgN)
-		}
-
-	});
-	}
-
-	LikeDisLike();
-
-/*
     // When user receives likes
-	  $('.usersDislikes').each(function() {
+	  $('.userslikes').each(function() {
+      //alert('WHEN USERS RECIVE LIKES FUNCTION')
   		var that = $(this);
   		var usernames = $(this).data('usernames').split(",");
   		var times = $(this).data('likes').split(",");
@@ -332,17 +284,17 @@ $(function() {
   		{
   			times[i] = +times[i];
 
-  			themsg = usernames[i] + " gefällt deine Beschreibung nicht";
+  			themsg = usernames[i] + " gefällt deine Beschreibung";
 
 
   			setTimeout(function(themsg) {
   				that.text(parseInt(that.text()) + 1);
-  				alertify.error(themsg)
+  				alertify.success(themsg)
 
   			}, times[i], themsg);
   		}
 	  });
-*/
+
     // When others receive likes
 	  $('.otherslikes').each(function() {
   		var that = $(this);
@@ -368,7 +320,7 @@ $(function() {
 
       // When others receive Dislikes
       $('.othersDislikes').each(function() {
-
+    //    alert('OthersDISlikes')
         var that = $(this);
       //  alert($(this).data('likes'))
         var times = $(this).data('likes').split(",");
@@ -377,7 +329,7 @@ $(function() {
 
         for(var i=0; i<times.length; i++)
         {
-          if(times[i]== 12000 || times[i] == 35000 ||  times[i] ==  13333 || times[i] == 20000 || times[i] == 25000 || times[i] == 40000 || times[i] ==  9999999 || times[i] ==  9000 || times[i] ==  40000 || times[i] ==  38000 || times[i] ==  1000 || times[i] == 55248 || times[i] == 68791 || times[i] == 76542 || times[i] == 87654){
+          if(times[i]== 12000 || times[i] == 35000 ||  times[i] ==  13333 || times[i] == 20000 || times[i] == 25000 || times[i] == 40000 || times[i] ==  9999999 || times[i] ==  9000 || times[i] ==  40000 || times[i] ==  38000 || times[i] ==  1000 ){
             setTimeout(function () {
             that.text(parseInt(that.text()) + 0);
             }, times[i]);
