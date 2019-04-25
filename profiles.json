@@ -6,7 +6,7 @@ window.others = {
       {
         "avatar": "avatars/others/george.png",
         "username": "Georgeee",
-        "text": "Ich bin ein 19-jähriger Typ aus Wisconsin. Meine Freunde machen sich deswegen oft über meinen Akzent lustig :-D. Ich liebe Musik. In letzter Zeit höre ich hauptsächlich Joy Division, Metallica und immer mal wieder Simon and Garfunkel. Neben der Musik interessiere ich mich noch für Sprachen, Psychologie, Zeichnen und Schreiben.",
+        "text": "Ich bin ein 19-jähriger Typ aus Sachsen. Meine Freunde machen sich deswegen oft über meinen Akzent lustig :-D. Ich liebe Musik. In letzter Zeit höre ich hauptsächlich Joy Division, Metallica und immer mal wieder Simon and Garfunkel. Neben der Musik interessiere ich mich noch für Sprachen, Psychologie, Zeichnen und Schreiben.",
         "likes": [12000 , 50000, 110000, 150000], //4
 				"Dislikes": [45000, 50000, 110000] //3
       },
@@ -28,7 +28,7 @@ window.others = {
         "avatar": "avatars/others/anca.png",
         "username": "AncaD",
         "text": "Ich bin Informatik-Student und interessiere mich für die Verarbeitung natürlicher Sprache. Außerdem probiere ich gern die unterschiedlichsten Tee-Sorten und bin ein begeisterter Verehrer des Semantic Web. Ich bin neugierig, worum es bei dieser Aufgabe hier gehen wird.",
-        "likes": [13333,99999999,99999999], //1
+        "likes": [13333,87654,76542], //3
 				"Dislikes": [10000, 12000, 40000, 80000, 120000] //0
       },
       {
@@ -49,7 +49,7 @@ window.others = {
         "avatar": "avatars/others/lauren.png",
         "username": "Laura",
         "text": "Ich bin Laura. Ich liebe es mit Freunden abzuhängen und shoppen zu gehen. Hier mache ich nur ein paar Online-Studien. Mal schauen, was kommt…",
-        "likes": [13333,99999999,99999999], //1
+        "likes": [13333,68791,55248], //1
 				"Dislikes": [12000,13500,38000] //2
       },
       {
