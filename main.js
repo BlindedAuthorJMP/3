@@ -7,7 +7,8 @@ $(function() {
 
   // **Parameters**
   // ------------
-
+  var AnzahlDerLikes=0;
+  var AnzahlDerDisLikes=0;
   function set_settings() {
     window.settings = [];
 
@@ -205,13 +206,20 @@ settings.condition_2_adjusted_Dislikes = [12000,14000,15000,35000,80000]; // 5
   			init_task();
   	});
   }
+  function DeaktiviereLike(){
+     setTimeout(function(){
+  $('.btn-like').attr("disabled", true);
+});
+}
+  /*
 function DeaktiviereLike(){
-	  	 setTimeout(function(){ 
+	  	 setTimeout(function(){
     $('.btn-like').attr("disabled", true);
 	alert("Die Zeit ist abgelaufen. Bitte kehren Sie nun zum Fragebogen zurück."); }, 2000);
   }
+  */
   function DeaktiviereDisLike(){
-	setTimeout(function(){   
+	setTimeout(function(){
     $('.btn-Dislike').attr("disabled", true);}, 3000);
   }
 
@@ -344,8 +352,33 @@ function DeaktiviereLike(){
         }
     });
 
+    console.log("AnzahlDerLikes",AnzahlDerLikes);
+    // Initialize like buttons
+	  $('.btn-like').on('click', function() {
+
+		  $(this).prev().text(parseInt($(this).prev().text()) + 1);
+
+		  $(this).attr("disabled", true);
+      $(this).parent().parent().find('.btn-Dislike').attr("disabled", true);
+
+      AnzahlDerLikes++;
+      console.log("AnzahlDerLikes",AnzahlDerLikes);
+      //return AnzahlDerLikes.value;
+	  });
 
 
+
+    console.log("AnzahlDerDisLikes",AnzahlDerDisLikes);
+    // Initialize Dislike buttons
+    $('.btn-Dislike').on('click', function() {
+    	$(this).prev().text(parseInt($(this).prev().text()) + 1);
+      // Like buttons can only be clicked once
+    	$(this).attr("disabled", true);
+      $(this).parent().parent().find('.btn-like').attr("disabled", true);
+      AnzahlDerDisLikes++;
+      console.log("AnzahlDerDisLikes",AnzahlDerDisLikes);
+    });
+/*
     // Initialize like buttons
 	  $('.btn-like').on('click', function() {
 		  $(this).prev().text(parseInt($(this).prev().text()) + 1);
@@ -362,7 +395,7 @@ function DeaktiviereLike(){
     	$(this).attr("disabled", true);
       $(this).parent().parent().find('.btn-like').attr("disabled", true);
     });
-
+*/
     // Initalize Masonry plugin
     // For display of user and other players boxes in columns without gaps
 		$('#task').masonry({
@@ -382,8 +415,10 @@ function DeaktiviereLike(){
 
     $('#final-continue').on('click', function() {
 
+      var UV =3;
       // Redirect link
-      location.href = window.redirect+'&a='+window.participant+'&b='+window.condition+'&c='+encodeURI(window.username)+'&d='+window.avatarexport+'&e='+encodeURI(window.description);  // change p->a, c->b, u ->c, av->d, d->e
+      location.href = window.redirect+'&a='+window.participant+'&b='+window.condition+'&c='+encodeURI(window.username)+'&d='+window.avatarexport+'&e='+encodeURI(window.description)+'&f='+encodeURI(AnzahlDerLikes)+'&g='+encodeURI(AnzahlDerDisLikes)+'&g='+encodeURI(AnzahlDerDisLikes)+'&i='+encodeURI(UV);  // change p->a, c->b, u ->c, av->d, d->e
+
 
     });
 
