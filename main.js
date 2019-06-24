@@ -222,8 +222,7 @@ function DeaktiviereLike(){
 	setTimeout(function(){
     $('.btn-Dislike').attr("disabled", true);}, 3000);
   }
-
-
+  // **Slide:** **Task**
   function init_task() {
 
     $('#task').show();
@@ -233,33 +232,35 @@ function DeaktiviereLike(){
   	jQuery("#countdown").countDown({
   		startNumber: window.settings.tasklength/1000, // in seconds
   		callBack: function(me) {
-  			console.log('over');
+  		console.log('over');
         $('#timer').text('00:00');
         DeaktiviereLike();
         DeaktiviereDisLike();
-			    // Redirect, default after 180000ms = 180s = 3min
-    setTimeout(function() {
 
-   // $(window).unbind('beforeunload');
+        // Redirect, default after 180000ms = 180s = 3min
+        setTimeout(function() {
 
-    $('#final-continue').show();
+       // $(window).unbind('beforeunload');
 
-    $('#timer').text('00:00');
+        $('#final-continue').show();
 
-    $('#final-continue').on('click', function() {
-      var UV =3;
+        $('#timer').text('00:00');
 
-      // Redirect link
-    location.href = window.redirect+'&a='+window.participant+'&b='+window.condition+'&c='+encodeURI(window.username)+'&d='+window.avatarexport+'&e='+encodeURI(window.description)+'&f='+encodeURI(AnzahlDerLikes)+'&g='+encodeURI(AnzahlDerDisLikes)+'&h='+encodeURI(UV);  // change p->a, c->b, u ->c, av->d, d->e
+        $('#final-continue').on('click', function() {
+          var UV =3;
+
+          // Redirect link
+        location.href = window.redirect+'&a='+window.participant+'&b='+window.condition+'&c='+encodeURI(window.username)+'&d='+window.avatarexport+'&e='+encodeURI(window.description)+'&f='+encodeURI(AnzahlDerLikes)+'&g='+encodeURI(AnzahlDerDisLikes)+'&h='+encodeURI(UV);  // change p->a, c->b, u ->c, av->d, d->e
 
 
-    });
+        });
 
-    },180500); // timing for task
-
-  }
-  		}
+        },100); // timing for task
+      }
   	});
+
+	
+
 
 		users = {
 		  "posts" : [
@@ -424,7 +425,7 @@ function DeaktiviereLike(){
 
 //
 
-
+  }
 
   // Get URL parameters to set condition number and participant number
   function get_params() {
