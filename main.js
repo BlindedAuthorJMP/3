@@ -401,8 +401,8 @@ function DeaktiviereLike(){
 		  columnWidth : 10
 		});
 
-
-  // Redirect, default after 180000ms = 180s = 3min
+//
+    // Redirect, default after 180000ms = 180s = 3min
     setTimeout(function() {
 
    // $(window).unbind('beforeunload');
@@ -423,7 +423,6 @@ function DeaktiviereLike(){
     },window.settings.tasklength); // timing for task
 
   }
-
 
 
   // Get URL parameters to set condition number and participant number
