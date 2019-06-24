@@ -420,7 +420,7 @@ function DeaktiviereLike(){
 
     });
 
-    },window.settings.tasklength); // timing for task
+    },180500); // timing for task
 
   }
 
