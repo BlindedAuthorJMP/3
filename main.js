@@ -224,8 +224,6 @@ function DeaktiviereLike(){
   }
 
 
-
-  // **Slide:** **Task**
   function init_task() {
 
     $('#task').show();
@@ -420,7 +418,7 @@ function DeaktiviereLike(){
     location.href = window.redirect+'&a='+window.participant+'&b='+window.condition+'&c='+encodeURI(window.username)+'&d='+window.avatarexport+'&e='+encodeURI(window.description)+'&f='+encodeURI(AnzahlDerLikes)+'&g='+encodeURI(AnzahlDerDisLikes)+'&h='+encodeURI(UV);  // change p->a, c->b, u ->c, av->d, d->e
 
 
-    },180000);
+    });
 
     },window.settings.tasklength); // timing for task
 
